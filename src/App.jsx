@@ -21,16 +21,17 @@ function App() {
   const  noOfProducts = Math.ceil(products.length / RENDER_PAGES)
   const start = currentPage * RENDER_PAGES
   const end = start + RENDER_PAGES
-
-  console.log(noOfProducts);
-  console.log(start);
-  console.log(end);
  
   const handleChangePage = (n) => {
     setCurrentPage(n)
   }
 
-
+  const goNext = () => {
+    setCurrentPage((prev) => prev + 1)
+  } 
+  const goPrev = () => {
+    setCurrentPage((prev) => prev - 1)
+  } 
 
   return (
     <>
@@ -38,11 +39,13 @@ function App() {
         <div className="pagination">
           <span>Pagination</span>
            <div className="paginationButton">
+            <button onClick={goPrev}>Prev</button>
            {[...Array(noOfProducts).keys()].map((item, index) => {
-              return <button key={index} onClick={()=> handleChangePage(index)}>
+              return <button className={`${index === currentPage ? "active" : null}`} key={index} onClick={()=> handleChangePage(index)}>
                 {item}
               </button>
             })}
+            <button onClick={goNext}>Next</button>
            </div>
         </div>
         <div className="card-div">
