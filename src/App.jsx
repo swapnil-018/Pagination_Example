@@ -9,13 +9,12 @@ function App() {
   const fetchData = async () => {
       const res = await fetch("https://dummyjson.com/products?limit=500")
       const data = await res.json()
-      setProducts(data)
+      setProducts(data.products)
   }
 
   useEffect(() => {
     fetchData()
   }, [])
- 
 
   return (
     <>
@@ -24,7 +23,9 @@ function App() {
           <span>Pagination</span>
         </div>
         <div className="card-div">
-          <Card />
+          {!products.length ? <span>Loading.....</span> : products.map((item) => {
+            return <Card key={item.title} image={item.images[0]} title={item.title}/>
+          })}
         </div>
       </div>
     </>
