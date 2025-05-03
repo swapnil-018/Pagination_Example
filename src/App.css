@@ -20,10 +20,24 @@
 }
 
 .card-div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
+.paginationButton {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  align-items: center;
+  justify-content: center;
+}
 
-
+.paginationButton > button {
+  width: 30px;
+  height: 30px;
+  border: none;
+} 
