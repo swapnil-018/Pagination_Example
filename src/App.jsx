@@ -3,7 +3,8 @@ import "./App.css";
 import Card from "./components/Card";
 
 function App() {
-
+  let name = "swapnil"
+  console.log(name)
   const [products, setProducts] = useState([])
   const [currentPage,setCurrentPage] = useState(0)
 
